@@ -16,6 +16,7 @@ import { CustomError } from '@/components/custom';
 import { getSafeString } from '@/helpers/string';
 import { SanityBlock, SanityImage } from '@/components/sanity';
 import { useCausesData } from '@/hooks/use-causes-data';
+import { useEventsData } from '@/hooks/use-events-data';
 
 
 
@@ -34,14 +35,15 @@ export default function Home() {
 
   const { data, error, loading } = useHomePageData()
   const { causes, error: causesError, loading: causesLoading } = useCausesData()
+  const { events, error: eventsError, loading: eventsLoading } = useEventsData()
   
 
-  if (error) {
+  if (error || causesError || eventsError) {
     return (
       <CustomError />
     )
   }
-  if (loading) {
+  if (loading || causesLoading || eventsLoading) {
     return (
       <></>
     )
@@ -169,9 +171,13 @@ export default function Home() {
 
         <div className=' flex flex-col gap-5 2xl:flex-row justify-between'>
 
-          <div className='flex flex-col gap-5 mt-7'>
-            <Eventcard />
-            <Eventcard />
+            <div className='flex flex-col gap-5 mt-7'>
+              {
+                events?.length && events?.slice(0,2)?.map((event, index) => (
+                  <Eventcard key={index} event={event} />
+                ))
+              }
+           
             
            
           </div>
