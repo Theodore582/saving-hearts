@@ -5,7 +5,7 @@ type Props = {
 
 export default function CustomError({ message }: Props) {
     return (
-        <div className="w-full h-full flex items-center text-red-600 justify-center gap-4 flex-col">
+        <div className="w-full h-full flex min-h-screen items-center text-red-600 justify-center gap-4 flex-col">
 
 
             <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" strokeWidth={1.5} stroke="currentColor" className="w-[80px] h-[80px]">

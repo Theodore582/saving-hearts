@@ -3,7 +3,7 @@
 import Button from '@/components/button'
 import Card from '@/components/card'
 import Eventcard from '@/components/eventcard'
-import Navbar from '@/components/navbar'
+// import Navbar from '@/components/navbar'
 import { aims, cards, proof } from '@/utils/data'
 import Slider from "react-slick";
 import Image from 'next/image'
@@ -11,6 +11,11 @@ import { title } from 'process'
 import { useState } from 'react'
 import ReactPlayer from 'react-player';
 import Link from 'next/link'
+import { useHomePageData } from '@/hooks/use-home-page-data';
+import { CustomError } from '@/components/custom';
+import { getSafeString } from '@/helpers/string';
+import { SanityBlock, SanityImage } from '@/components/sanity';
+import { useCausesData } from '@/hooks/use-causes-data';
 
 
 
@@ -27,11 +32,25 @@ export default function Home() {
     arrows:false
   };
 
+  const { data, error, loading } = useHomePageData()
+  const { causes, error: causesError, loading: causesLoading } = useCausesData()
+  
+
+  if (error) {
+    return (
+      <CustomError />
+    )
+  }
+  if (loading) {
+    return (
+      <></>
+    )
+  }
   
   return (
 
     <main> 
-      <Slider {...settings}>
+      {/* <Slider {...settings}>
         
       <section className='w-full h-auto bg-[url("/assets/map.svg")] bg-cover bg-no-repeat container'>
         <div   className='text-center flex flex-col lg:text-left lg:flex-row justify-between md:px-20 font-raleway'>
@@ -68,21 +87,23 @@ export default function Home() {
          
         </section>
 
-      </Slider>
+      </Slider> */}
 
       <section className='bg-[#F5F5F5] px-10 lg:px-20 py-10'>
         <div className='font-raleway text-center'>
           <h1 className='text-primaryy font-semibold text-lg pt-5'>What We Do</h1>
-          <h1 className=' font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px]'>We are here to provide aid for the children</h1>
+          <h1 className=' font-raleway m-auto text-3xl lg:text-5xl font-semibold max-w-[600px] lg:leading-[60px]'>
+            {getSafeString(data?.whatWeDoTitle)}
+          </h1>
         </div>
        
-        <div className='w-full flex flex-col gap-5 lg:flex-row justify-center lg:gap-14 mt-10'>
+        <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto  lg:gap-10 mt-10'>
            {
-            aims.map((aim,index)=>(
-              <div className='lg:w-[240px] text-center flex flex-col gap-4'key={index}>
-                <p className="text-primaryy m-auto text-4xl" >{aim.icon}</p>  
-                <h1 className='lg:text-2xl font-semibold text-gray-800'>{aim.title}</h1>
-                <p className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-400'>{aim.text}</p>
+            data && data.whatWeDoPoints?.length && data?.whatWeDoPoints.map((aim, index)=>(
+              <div className='w-full text-center flex flex-col items-center  gap-4' key={index}>
+                <SanityImage image={aim?.wwdIcon} className="w-[100px] h-[50px]" usesImg fit="contain" />
+                <h1 className='lg:text-xl font-semibold text-gray-800'>{aim.wwdTitle}</h1>
+                <p className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-400'>{aim.wwdDescription}</p>
               </div>
             ))
            }
@@ -96,14 +117,10 @@ export default function Home() {
         <div className='grid xl:grid-cols-2 gap-10 xl:px-20 xl:gap-1 h-auto py-10'>
 
           <div className='text-center xl:text-left font-raleway xl:w-[90%] flex flex-col justify-center items-center xl:justify-start xl:items-start m-auto'>
-            <h1 className='text-primaryy font-semibold text-lg pt-10 '>Who Are We</h1>
-            <h1 className='text-3xl font-raleway lg:text-5xl font-semibold lg:leading-[60px]'>A Little About Us</h1>
-            <p className='font-poppins text-sm leading-loose text-gray-500 lg:w-[500px] my-5'>Nii Okai Saving Hearts Foundation (NOSHF) is a non-profit organization founded by musician Ernest Nii-Okai Okai.
-               On his 10th anniversary of his album 'Mokobe', he launched the Saving Hearts Project to perform 10 heart surgeries for 
-               underprivileged children in Ghana. The foundation was established to support more children who require funding for open 
-               heart surgeries. On his 40th birthday, the Foundation launched the Forty Hearts Project, which currently has 15 successful 
-               surgeries and hopes to complete the remaining 25.
-               
+            <h1 className='text-primaryy font-semibold text-lg pt-10 '>{getSafeString(data?.about?.aboutSubtitle)}</h1>
+            <h1 className='text-3xl font-raleway lg:text-5xl font-semibold lg:leading-[60px]'>{getSafeString(data?.about?.aboutTitle)}</h1>
+            <p className='font-poppins text-sm leading-loose text-gray-500 lg:w-[500px] my-5'>
+               {getSafeString(data?.about?.aboutDescription)}
              </p>
              
             <Link href="/about">
@@ -114,7 +131,8 @@ export default function Home() {
         </div>
 
           <div className=''>
-          <img className='w-5/5 h-3/3' src='assets/about.png' alt="" />
+            <SanityImage image={data?.about?.aboutImage} className="w-5/5 h-3/3" usesImg fit="contain" />
+
         </div>
         </div>
 
@@ -126,14 +144,14 @@ export default function Home() {
           <h1 className='text-primaryy font-semibold text-lg pt-5'>What We Do</h1>
           <h1 className=' font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px]'>Causes</h1>
         </div>
-        <div className="flex flex-col gap-20 lg:flex-row lg:justify-between lg:bg-[url('/assets/shade.pn')] bg-cover bg-no-repeat h-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:justify-between lg:bg-[url('/assets/shade.pn')] bg-cover bg-no-repeat h-auto">
             {
-              cards.map((card,index)=>(
+             causes && causes.map((card,index)=>(
                 
                     <Card key={index}
                     image={card.image}
                     title={card.title}
-                    text={card.text}
+                    description={card.description}
                      />
                 
               ))

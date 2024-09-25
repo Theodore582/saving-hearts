@@ -17,7 +17,7 @@ export const urlFor = (source: SanityImageSource): ImageUrlBuilder | null => {
 };
 
 type Props = {
-    image: SanityImageSource;
+    image?: SanityImageSource;
     className?: ClassValue;
     alt?: string;
     fit?: "contain" | "cover";

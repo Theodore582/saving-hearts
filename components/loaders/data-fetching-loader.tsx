@@ -4,7 +4,7 @@ import 'ldrs/helix';
 import type { } from 'ldrs';
 import { Button } from '../ui/button';
 import { useRouter } from 'next/navigation';
-import CustomEmpty from '../core/custom-empty';
+import { CustomEmpty } from '../custom';
 
 type Props = {
     data: any;

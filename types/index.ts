@@ -20,6 +20,8 @@ export type HomeAboutSection = {
     aboutSubtitle: string
     aboutTitle: string
     aboutDescription: string
+    aboutImage: SanityImageSource
+
 }
 
 export type HomeVolunteer = {

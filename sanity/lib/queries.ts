@@ -18,7 +18,8 @@ const pageQueryKeys = {
     "about": "aboutPage",
     "project": "projectPage",
     "news": "news",
-    "events": "events",
+    "event": "event",
+    "cause": "cause",
     "contact": "contactPage",
 };
 
@@ -51,7 +52,7 @@ export function generatePageQuery(page: PageQueryKeysType, sortField?: string, s
     const idx = getIdx(index);
 
 
-    return groq`*[_type == "${page}"] | order(${field} ${order})${idx}`;
+    return groq`*[_type == "${pageQueryKeys[page]}"] | order(${field} ${order})${idx}`;
 }
 
 export function generateNewsQuery(slug: string) {
