@@ -2,6 +2,7 @@ import { APP_NAME } from '@/constants'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import ClientProvider from '@/providers/client-provider'
 
 
 export const metadata: Metadata = {
@@ -16,7 +17,9 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      {/* <ClientProvider> */}
+        <body>{children}</body>
+      {/* </ClientProvider> */}
     </html>
   )
 }

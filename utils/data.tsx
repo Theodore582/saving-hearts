@@ -26,7 +26,7 @@ export  const navlinks = [
     link: "PROJECTS",
     url: "/projects",
     submenu: [
-      { link: "The Saving Hearts Project", url: "/fortyhearts" },
+      { link: "The Saving Hearts Project", url: "/" },
       { link: "The Forty(40) Hearts Projects", url: "/projects/fortyhearts" },
     ]
   },

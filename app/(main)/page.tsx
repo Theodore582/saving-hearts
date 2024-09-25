@@ -3,7 +3,7 @@
 import Button from '@/components/button'
 import Card from '@/components/card'
 import Eventcard from '@/components/eventcard'
-import Navbar from '@/components/navbar'
+// import Navbar from '@/components/navbar'
 import { aims, cards, proof } from '@/utils/data'
 import Slider from "react-slick";
 import Image from 'next/image'
@@ -11,6 +11,7 @@ import { title } from 'process'
 import { useState } from 'react'
 import ReactPlayer from 'react-player';
 import Link from 'next/link'
+import ClientProvider from '@/providers/client-provider'
 
 
 
@@ -31,7 +32,8 @@ export default function Home() {
   return (
 
     <main> 
-      <Slider {...settings}>
+      <ClientProvider>
+    <Slider {...settings}>
         
       <section className='w-full h-auto bg-[url("/assets/map.svg")] bg-cover bg-no-repeat container'>
         <div   className='text-center flex flex-col lg:text-left lg:flex-row justify-between md:px-20 font-raleway'>
@@ -68,7 +70,8 @@ export default function Home() {
          
         </section>
 
-      </Slider>
+      </Slider> 
+      </ClientProvider>
 
       <section className='bg-[#F5F5F5] px-10 lg:px-20 py-10'>
         <div className='font-raleway text-center'>
