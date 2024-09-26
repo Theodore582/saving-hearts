@@ -15,7 +15,7 @@ export const MUSICPAGE_QUERY = groq`*[_type == "musicPage"] | order(_createdAt a
 
 const pageQueryKeys = {
     "home": "homePage",
-    "about": "aboutPage",
+    "about": "about",
     "project": "projectPage",
     "news": "news",
     "event": "event",
