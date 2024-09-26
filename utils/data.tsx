@@ -1,3 +1,4 @@
+import { title } from 'process';
 import { FaHeartbeat } from 'react-icons/fa';
 import { FaHandHoldingHeart } from 'react-icons/fa';
 import { FaBullhorn } from 'react-icons/fa';
@@ -14,10 +15,10 @@ export  const navlinks = [
     link: "ABOUT US",
     url: "/about"
   },
-  {
-    link: "NEWS & EVENTS",
-    url: "/news"
-  },
+  // {
+  //   link: "NEWS & EVENTS",
+  //   url: "/news"
+  // },
   // {
   //   link: "THE STAKEHOLDERS",
   //   url: "/news"
@@ -26,8 +27,8 @@ export  const navlinks = [
     link: "PROJECTS",
     url: "/projects",
     submenu: [
-      { link: "The Saving Hearts Project", url: "/fortyhearts" },
-      { link: "The Forty(40) Hearts Projects", url: "/projects/fortyhearts" },
+      // { link: "The Saving Hearts Project", url: "/" },
+      { link: "The Saving Hearts Project", url: "/projects/savinghearts" },
     ]
   },
   {
@@ -145,3 +146,34 @@ export const events = [
   },
 
 ] 
+
+
+export const galleries = [
+  {
+    title: 'SIGNING OF MOU WITH GHANA HEART FOUNDATION',
+    images: [
+      { src: '/assets/signing1.png', alt: 'Image 1', text: '' },
+      { src: '/assets/signing2.png', alt: 'Image 2', text: '' },
+      { src: '/assets/signing3.jpg', alt: 'Image 3', text: '' },
+      { src: '/assets/signing4.jpg', alt: 'Image 4', text: '' },
+    ],
+  },
+  {
+    title: 'RECORDING OF THE SAVING HEARTS SONG',
+    images: [
+      { src: '/assets/recording1.jpg', alt: 'Image 5', text: '' },
+      { src: '/assets/recording2.jpg', alt: 'Image 6', text: '' },
+      { src: '/assets/recording3.jpg', alt: 'Image 7', text: '' },
+      { src: '/assets/recording4.jpg', alt: 'Image 8', text: '' },
+    ],
+  },
+  {
+    title: 'SAVING HEARTS REGIONAL TOUR',
+    images: [
+      { src: '/assets/tour1.jpg', alt: 'Image 5', text: 'Image 5' },
+      { src: '/assets/tour2.jpg', alt: 'Image 6', text: 'Image 6' },
+      { src: '/assets/tour3.jpg', alt: 'Image 7', text: 'Image 7' },
+      { src: '/assets/tour4.jpg', alt: 'Image 8', text: 'Image 8' },
+    ],
+  }, 
+];

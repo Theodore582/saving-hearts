@@ -3,18 +3,14 @@
 import Button from '@/components/button';
 import Card from '@/components/card';
 import Eventcard from '@/components/eventcard';
-// import Navbar from '@/components/navbar'
-import { aims, cards, proof } from '@/utils/data';
 import Slider from "react-slick";
-import Image from 'next/image';
-import { title } from 'process';
-import { useState } from 'react';
 import ReactPlayer from 'react-player';
+import ClientProvider from '@/providers/client-provider';
 import Link from 'next/link';
 import { useHomePageData } from '@/hooks/use-home-page-data';
 import { CustomError } from '@/components/custom';
 import { getSafeString } from '@/helpers/string';
-import { SanityBlock, SanityImage } from '@/components/sanity';
+import { SanityImage } from '@/components/sanity';
 import { useCausesData } from '@/hooks/use-causes-data';
 import { useEventsData } from '@/hooks/use-events-data';
 import CustomLoader from '@/components/custom/loader';
@@ -53,44 +49,44 @@ export default function Home() {
   return (
 
     <main>
-      <Slider {...settings}>
-        
-      <section className='w-full h-auto bg-[url("/assets/map.svg")] bg-cover bg-no-repeat container'>
-        <div   className='text-center flex flex-col lg:text-left lg:flex-row justify-between md:px-20 font-raleway'>
-      <div className='flex items-center lg:items-start flex-col gap-5 mt-20  justify-center'>
-              <h1 className='text-3xl  md:text-6xl font-bold lg:leading-[70px]'>Every life saved is a world <span className='text-secondaryy'>transformed.</span></h1>
-            <p className='text-lg text-grey font-poppins '>&apos;&apos;Saving one life may not change the world, but for that one person, 
-              the world changes forever.&apos;&apos;</p>
+      <ClientProvider>
+        <Slider {...settings}>
+          <section className='w-full h-auto bg-[url("/assets/map.svg")] bg-cover bg-no-repeat container'>
+            <div className='text-center flex flex-col lg:text-left lg:flex-row justify-between md:px-20 font-raleway'>
+              <div className='flex items-center lg:items-start flex-col gap-5 mt-20  justify-center'>
+                <h1 className='text-3xl  md:text-6xl font-bold lg:leading-[70px]'>Every life saved is a world <span className='text-secondaryy'>transformed.</span></h1>
+                <p className='text-lg text-grey font-poppins '>&apos;&apos;Saving one life may not change the world, but for that one person,
+                  the world changes forever.&apos;&apos;</p>
 
-              <Button title="Donate" />
-      </div>
+                <Button title="Donate" />
+              </div>
 
-      <div className='flex'>
-            <img className='mt-10 lg:mt-0 xl:w-[1100px]' src='assets/hero1.png' alt="" />
-      </div>
-    </div>
-     </section>
+              <div className='flex'>
+                <img className='mt-10 lg:mt-0 xl:w-[1100px]' src='assets/hero1.png' alt="" />
+              </div>
+            </div>
+          </section>
 
-        <section className='w-full h-[85vh] bg-[url("/assets/hero5.png")] bg-cover bg-center bg-no-repeat'>
-        
-          <div className=' text-center flex flex-col gap-20 lg:text-left lg:flex-row justify-between md:px-20 font-raleway'>
-            <div className='h-[60vh] flex items-center lg:items-start flex-col gap-5 mt-20 justify-center '>
-              <h1 className='text-3xl md:text-6xl font-bold lg:leading-[70px] text-white'>I AM A HEART <br></br> <span className='text-secondaryy'>SAVER</span>.</h1>
-              <p className='text-lg text-white font-poppins font-extralight '>Raising funds to sponsor children living with <br></br> cardiovascular diseases</p>
-              <Button title="Donate" />
+          <section className='w-full h-[85vh] bg-[url("/assets/hero5.png")] bg-cover bg-center bg-no-repeat'>
+
+            <div className=' text-center flex flex-col gap-20 lg:text-left lg:flex-row justify-between md:px-20 font-raleway'>
+              <div className='h-[60vh] flex items-center lg:items-start flex-col gap-5 mt-20 justify-center '>
+                <h1 className='text-3xl md:text-6xl font-bold lg:leading-[70px] text-white'>I AM A HEART <br></br> <span className='text-secondaryy'>SAVER</span>.</h1>
+                <p className='text-lg text-white font-poppins font-extralight '>Raising funds to sponsor children living with <br></br> cardiovascular diseases</p>
+                <Button title="Donate" />
+              </div>
+
+              <div className='h-[60vh] flex items-center lg:items-start flex-col gap-5 mt-20 justify-center'>
+                <ReactPlayer url='/assets/documentary.mp4' controls />
+              </div>
             </div>
 
-            <div className='h-[60vh] flex items-center lg:items-start flex-col gap-5 mt-20 justify-center'>
-              <ReactPlayer url='/assets/documentary.mp4' controls />
-            </div>
-          </div>
-          
 
-          
-         
-        </section>
 
-      </Slider>
+
+          </section>
+        </Slider>
+      </ClientProvider>
 
       <section className='bg-[#F5F5F5] px-10 lg:px-20 py-10'>
         <div className='font-raleway text-center'>
