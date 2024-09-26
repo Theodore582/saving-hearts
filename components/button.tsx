@@ -1,15 +1,25 @@
+import Link from 'next/link';
 import React from 'react'
 
 interface IButton{
- title:string
+  title: string
+  link?: string
 }
 
-const Button = ({title}:IButton) => {
-  return (
-      <div className='bg-primaryy w-[180px] h-[50px] rounded-md flex justify-center items-center font-raleway  hover:bg-grey 
+const Button = ({title, link}:IButton) => {
+  return link ? (
+    <Link href={link}>
+      <button className='bg-primaryy w-[180px] h-[50px] rounded-md flex justify-center items-center font-raleway  hover:bg-grey 
       hover:scale-105 active:bg-primaryy hover:transition duration-150 ease-in-out cursor-pointer' >
-          <h1 className='text-lg font-bold text-white'>{title}</h1>
-    </div>
+        <p className='text-lg font-bold text-white'>{title}</p>
+      </button>
+    </Link>
+  )
+    : (
+      <button className='bg-primaryy w-[180px] h-[50px] rounded-md flex justify-center items-center font-raleway  hover:bg-grey 
+      hover:scale-105 active:bg-primaryy hover:transition duration-150 ease-in-out cursor-pointer' >
+          <p className='text-lg font-bold text-white'>{title}</p>
+    </button>
   )
 }
 

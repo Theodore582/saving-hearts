@@ -1,4 +1,5 @@
-import React from 'react'
+"use client"
+import React from 'react';
 import {
   Tabs,
   TabsContent,
@@ -9,9 +10,27 @@ import {
 import NewsCard from '@/components/newscard'
 import { events, news } from '@/utils/data'
 import EventsCard from '@/components/eventscard'
+import { useEventsData } from '@/hooks/use-events-data';
+import { useNewsData } from '@/hooks/use-news-data';
+import { CustomError } from '@/components/custom';
+import CustomLoader from '@/components/custom/loader';
 
 
 const News = () => {
+  const { events, error: eventError, loading: eventsLoading } = useEventsData();
+  const { newss, error, loading } = useNewsData();
+
+  if (error || eventError) {
+    return (
+      <CustomError />
+    );
+  }
+  if (loading || eventsLoading) {
+    return (
+      <CustomLoader isScreenHeight />
+    );
+  }
+
   return (
     <div>
       <section className='bg-[url("/assets/news.png")] bg-cover h-[50vh] lg:bg-cover bg-no-repeat lg:h-[80vh] flex justify-center items-center'>
@@ -36,11 +55,10 @@ const News = () => {
           <TabsContent className='grid grid-cols-2 gap-8' value="news">
 
             {
-              news.map((news, index) => (
+              newss.map((news, index) => (
 
                 <NewsCard key={index}
-                  title={news.title}
-                  text={news.text}
+                 news={news}
                 />
 
               ))
@@ -52,12 +70,10 @@ const News = () => {
 
           <TabsContent className='grid grid-cols-2 gap-8' value="events">
             {
-              events.map((events, index) => (
+              events.map((ev, index) => (
 
                 <EventsCard key={index}
-                  image={events.image}
-                  title={events.title}
-                  text={events.text}
+                  event={ev}
                 />
 
               ))
