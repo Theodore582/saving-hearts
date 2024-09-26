@@ -1,22 +1,23 @@
-"use client"
+"use client";
 
-import Button from '@/components/button'
-import Card from '@/components/card'
-import Eventcard from '@/components/eventcard'
+import Button from '@/components/button';
+import Card from '@/components/card';
+import Eventcard from '@/components/eventcard';
 // import Navbar from '@/components/navbar'
-import { aims, cards, proof } from '@/utils/data'
+import { aims, cards, proof } from '@/utils/data';
 import Slider from "react-slick";
-import Image from 'next/image'
-import { title } from 'process'
-import { useState } from 'react'
+import Image from 'next/image';
+import { title } from 'process';
+import { useState } from 'react';
 import ReactPlayer from 'react-player';
-import Link from 'next/link'
+import Link from 'next/link';
 import { useHomePageData } from '@/hooks/use-home-page-data';
 import { CustomError } from '@/components/custom';
 import { getSafeString } from '@/helpers/string';
 import { SanityBlock, SanityImage } from '@/components/sanity';
 import { useCausesData } from '@/hooks/use-causes-data';
 import { useEventsData } from '@/hooks/use-events-data';
+import CustomLoader from '@/components/custom/loader';
 
 
 
@@ -30,28 +31,28 @@ export default function Home() {
     speed: 500,
     slidesToShow: 1,
     slidesToScroll: 1,
-    arrows:false
+    arrows: false
   };
 
-  const { data, error, loading } = useHomePageData()
-  const { causes, error: causesError, loading: causesLoading } = useCausesData()
-  const { events, error: eventsError, loading: eventsLoading } = useEventsData()
-  
+  const { data, error, loading } = useHomePageData();
+  const { causes, error: causesError, loading: causesLoading } = useCausesData();
+  const { events, error: eventsError, loading: eventsLoading } = useEventsData();
+
 
   if (error || causesError || eventsError) {
     return (
       <CustomError />
-    )
+    );
   }
   if (loading || causesLoading || eventsLoading) {
     return (
-      <></>
-    )
+      <CustomLoader isScreenHeight />
+    );
   }
-  
+
   return (
 
-    <main> 
+    <main>
       {/* <Slider {...settings}>
         
       <section className='w-full h-auto bg-[url("/assets/map.svg")] bg-cover bg-no-repeat container'>
@@ -98,21 +99,21 @@ export default function Home() {
             {getSafeString(data?.whatWeDoTitle)}
           </h1>
         </div>
-       
+
         <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto  lg:gap-10 mt-10'>
-           {
-            data && data.whatWeDoPoints?.length && data?.whatWeDoPoints.map((aim, index)=>(
+          {
+            data && data.whatWeDoPoints?.length && data?.whatWeDoPoints.map((aim, index) => (
               <div className='w-full text-center flex flex-col items-center  gap-4' key={index}>
                 <SanityImage image={aim?.wwdIcon} className="w-[100px] h-[50px]" usesImg fit="contain" />
                 <h1 className='lg:text-xl font-semibold text-gray-800'>{aim.wwdTitle}</h1>
                 <p className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-400'>{aim.wwdDescription}</p>
               </div>
             ))
-           }
-          
+          }
+
         </div>
-     </section>
-      
+      </section>
+
 
       <section className='container'>
 
@@ -122,102 +123,103 @@ export default function Home() {
             <h1 className='text-primaryy font-semibold text-lg pt-10 '>{getSafeString(data?.about?.aboutSubtitle)}</h1>
             <h1 className='text-3xl font-raleway lg:text-5xl font-semibold lg:leading-[60px]'>{getSafeString(data?.about?.aboutTitle)}</h1>
             <p className='font-poppins text-sm leading-loose text-gray-500 lg:w-[500px] my-5'>
-               {getSafeString(data?.about?.aboutDescription)}
-             </p>
-             
+              {getSafeString(data?.about?.aboutDescription)}
+            </p>
+
             <Link href="/about">
               <Button title="Learn More" />
             </Link>
 
-              
-        </div>
+
+          </div>
 
           <div className=''>
             <SanityImage image={data?.about?.aboutImage} className="w-5/5 h-3/3" usesImg fit="contain" />
 
-        </div>
+          </div>
         </div>
 
-    </section>
+      </section>
 
       <section className='container px-10 lg:px-24 py-8'>
-        
+
         <div className='font-raleway text-center'>
           <h1 className='text-primaryy font-semibold text-lg pt-5'>What We Do</h1>
           <h1 className=' font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px]'>Causes</h1>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:justify-between lg:bg-[url('/assets/shade.pn')] bg-cover bg-no-repeat h-auto">
-            {
-             causes && causes.map((card,index)=>(
-                
-                    <Card key={index}
-                    image={card.image}
-                    title={card.title}
-                    description={card.description}
-                     />
-                
-              ))
-            }
+          {
+            causes && causes.map((card, index) => (
+
+              <Card key={index}
+                image={card.image}
+                title={card.title}
+                description={card.description}
+              />
+
+            ))
+          }
         </div>
-        
-    </section>
+
+      </section>
 
       <section className='bg-[#F5F5F5]'>
         <div className='lg:px-24 py-16 px-10 container '>
-        <div className='font-raleway text-center'>
-          <h1 className='text-primaryy font-semibold text-lg pt-5'>What We Do</h1>
-          <h1 className='font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px]'>UpComing Events</h1>
-        </div>
+          <div className='font-raleway text-center'>
+            <h1 className='text-primaryy font-semibold text-lg pt-5'>What We Do</h1>
+            <h1 className='font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px]'>UpComing Events</h1>
+          </div>
 
-        <div className=' flex flex-col gap-5 2xl:flex-row justify-between'>
+          <div className=' grid grid-cols-1 lg:grid-cols-4 gap-5 mt-4 2xl:flex-row justify-between'>
 
-            <div className='flex flex-col gap-5 mt-7'>
+            <div className='flex flex-col gap-5 col-span-1 lg:col-span-3'>
               {
-                events?.length && events?.slice(0,2)?.map((event, index) => (
+                events?.length && events?.slice(0, 2)?.map((event, index) => (
                   <Eventcard key={index} event={event} />
                 ))
               }
-           
-            
-           
-          </div>
 
-            <div className='flex flex-col justify-center md:items-center 2xl:w-[28%]  bg-[url("/assets/volunteer.png")] bg-cover bg-no-repeat  py-16 px-3 lg:px-10 '>
-              <h1 className='text-4xl lg:text-5xl font-raleway font-semibold gap-4 text-primaryy backdrop-blur-sm'>Volunteer<span className='text-3xl lg:text-5xl text-white '><br></br> To Help</span></h1>
-              <p className='font-poppins text-sm leading-loose text-gray-300  my-5'>Lorem ipsum dolor sit amet consectetur. Lacus vitae nibh diam eu lectus sit viverra.
+
+
+            </div>
+
+            <div className='flex flex-col justify-center md:items-center w-full text-center  bg-[url("/assets/volunteer.png")] bg-cover bg-no-repeat  py-16 px-3 lg:px-10 '>
+              <h1 className='text-3xl lg:text-4xl  font-raleway font-semibold gap-4 text-primaryy backdrop-blur-sm'>{getSafeString(data?.volunteer?.title)}</h1>
+              <p className='font-poppins text-sm leading-loose text-gray-300  my-5'>
+                {getSafeString(data?.volunteer?.description)}
               </p>
-          <Button title='Volunteer Now' />
-          </div>
+              <Button title='Volunteer Now' link="contact" />
+            </div>
 
-         
-          
+
+
+          </div>
         </div>
-        </div>
-    </section>
+      </section>
 
       <section className='bg-[url("/assets/proof.png")] bg-cover bg-no-repeat bg-fixed lg:h-[200px]'>
         <div className='lg:px-24 py-16 px-10 container bg-[url("/assets/proof.png)] bg-cover bg-no-repeat flex flex-col gap-10 lg:flex-row lg:gap-28 justify-center'>
-  
 
-                    {
-                      proof.map((item, index)=>(
-                        <div key={index}>
-                        <h1 className='font-raleway text-6xl font-semibold text-white text-center'>{item.number}</h1>
-                        <h1 className='font-poopins text-gray-400 font-medium text-center'>{item.title}</h1>
-                        </div>
-                      ))
-                    }
 
-                  
+          {
+            data?.stats.map((item, index) => (
+              <div key={index}>
+                <h1 className='font-raleway text-6xl font-semibold text-white text-center'>{item.count}</h1>
+                <h1 className='font-poopins text-gray-400 font-medium text-center'>{item.statLabel}</h1>
+              </div>
+            ))
+          }
+
+
         </div>
 
-    </section>
-    
-
-      
-    
+      </section>
 
 
-   </main>
-  )
+
+
+
+
+    </main>
+  );
 }

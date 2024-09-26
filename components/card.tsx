@@ -21,7 +21,7 @@ const Card = ({ image, title, description }: ICard) => {
         <h1 className='text-xl lg:text-2xl font-semibold text-black'>{title}</h1>
         <p className='font-poppins text-sm leading-loose text-gray-500 '>{description} </p>
 
-        <Button title="Donate Now" />
+        <Button title="Donate Now" link="contact" />
       </div>
     </div>
   );

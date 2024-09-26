@@ -47,7 +47,7 @@ const EventCard = ({ event: { content, date, image, description, location, title
   // Format date for display
   const formattedDay = format(eventDate, 'dd');
   const formattedMonth = format(eventDate, 'MMMM');
-  const formattedTime = format(eventDate, 'p'); // 'p' gives a formatted time like "5:00 PM"
+  const formattedTime = format(eventDate, 'p');
 
   return (
     <div className='bg-white flex-col shadow-lg h-auto gap-5 py-5 px-7 rounded-xl flex xl:flex-row m-0 p-0'>
@@ -81,7 +81,7 @@ const EventCard = ({ event: { content, date, image, description, location, title
         <p className='font-poppins text-sm leading-loose text-gray-500 xl:w-[500px] my-5'>
           {getSafeString(description)}
         </p>
-        <div className='flex flex-col justify-center items-center gap-5 md:flex-row xl:gap-8 xl:w-[550px]'>
+        <div className='flex flex-col justify-center items-center gap-5 mt-auto md:flex-row xl:gap-8 xl:w-[550px]'>
           <Button title='Learn More' />
           {/* Dynamically show event time */}
           <p className='flex gap-3 items-center font-poppins text-md text-gray-500'>
