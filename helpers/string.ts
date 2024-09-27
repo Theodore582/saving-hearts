@@ -4,7 +4,7 @@ import { BsEnvelopeAt, BsInstagram, BsTelephone, BsTwitter, BsWhatsapp, BsYoutub
 
 export function getSafeString(str?: string | null, error?: boolean, loading?: boolean): string {
     if (error || loading) return "";
-    return str || "N/A";
+    return str || "";
 }
 
 // Map of social platforms to icons

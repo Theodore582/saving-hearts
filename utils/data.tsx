@@ -25,11 +25,11 @@ export  const navlinks = [
   // },
   {
     link: "PROJECTS",
-    url: "/projects/savinghearts",
-    submenu: [
-      // { link: "The Saving Hearts Project", url: "/" },
-      { link: "The Saving Hearts Project", url: "/projects/savinghearts" },
-    ]
+    url: "/projects",
+    // submenu: [
+    //   // { link: "The Saving Hearts Project", url: "/" },
+    //   { link: "The Saving Hearts Project", url: "/projects/savinghearts" },
+    // ]
   },
   {
     link: "CONTACT US",

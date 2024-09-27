@@ -5,11 +5,13 @@ import longContent from './schemaTypes/long-content';
 import {
   ABOUTPAGE,
   HOMEPAGE,
+  PROJECTPAGE,
   APP,
   News,
   Event,
   Cause,
-  Footer
+  Footer,
+  Project,
 } from './schemaTypes';
 
 
@@ -20,12 +22,14 @@ export const schema: { types: SchemaTypeDefinition[]; } = {
 
     HOMEPAGE,
     ABOUTPAGE,
+    PROJECTPAGE,
     APP,
     
     News,
     Event,
     Cause,
     Footer,
+    Project,
 
   ],
 };

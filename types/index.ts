@@ -100,4 +100,16 @@ export type AppValues = {
     email: string
     phone: string
     location: string
+};
+
+export type Project = {
+    title: string
+    description: string
+    images: SanityImageSource[]
+};
+
+export type ProjectPageValues = {
+    heroImage: SanityImageSource
+    subtitle: string
+    title: string
 }

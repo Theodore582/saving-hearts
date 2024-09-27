@@ -13,6 +13,7 @@ import { getSafeString } from '@/helpers/string';
 import { SanityBlock, SanityImage } from '@/components/sanity';
 import { CustomError } from '@/components/custom';
 import CustomLoader from '@/components/custom/loader';
+import { urlFor } from '@/components/sanity/image';
 
 
 
@@ -30,10 +31,13 @@ const Page = () => {
     );
   }
 
+  const heroImage = urlFor(data?.hero?.bgImage); 
+
+
   return (
     <div>
       <section style={{
-        backgroundImage: `url(${data?.hero?.bgImage || "/assets/aboutpg.jpg"})`
+        backgroundImage: `url(${heroImage || "/assets/aboutpg.jpg"})`
       }} className='bg-[url("/assets/aboutpg.jpg")] bg-cover bg-center h-[50vh] lg:bg-cover bg-no-repeat lg:h-[80vh] flex justify-center items-center'>
         <div className='font-raleway text-center'>
           <h1 className='text-primaryy font-semibold text-lg pt-5'>{getSafeString(data?.hero?.subtitle, !!error, loading)}</h1>

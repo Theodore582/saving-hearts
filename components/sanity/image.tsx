@@ -9,12 +9,12 @@ import { cn } from "@/lib/utils";
 
 const { projectId, dataset } = client.config();
 
-export const urlFor = (source: SanityImageSource): ImageUrlBuilder | null => {
+export const urlFor = (source?: SanityImageSource): ImageUrlBuilder | null => {
     if (!source) return null;
     return projectId && dataset
         ? imageUrlBuilder({ projectId, dataset }).image(source)
         : null;
-};
+}
 
 type Props = {
     image?: SanityImageSource;
