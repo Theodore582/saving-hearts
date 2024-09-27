@@ -17,6 +17,9 @@ export default defineType({
             title: 'Hero Section',
             type: 'object',
             description: "This field is for the information that will show at the hero section of the about page",
+            fieldsets: [
+                { name: 'hero', title: 'Hero Section' }
+            ],
             fields: [
                 {
                     name: "bgImage",
