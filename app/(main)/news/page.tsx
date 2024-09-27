@@ -55,7 +55,7 @@ const News = () => {
           <TabsContent className='grid grid-cols-2 gap-8' value="news">
 
             {
-              newss.map((news, index) => (
+              newss && newss?.length > 0 && (newss || []).map((news, index) => (
 
                 <NewsCard key={index}
                  news={news}
@@ -70,7 +70,7 @@ const News = () => {
 
           <TabsContent className='grid grid-cols-2 gap-8' value="events">
             {
-              events.map((ev, index) => (
+              events && events?.length > 0 && (events || []).map((ev, index) => (
 
                 <EventsCard key={index}
                   event={ev}

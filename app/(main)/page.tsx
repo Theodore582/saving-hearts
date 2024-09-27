@@ -102,7 +102,7 @@ export default function Home() {
 
         <div className='w-full grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 mx-auto  lg:gap-10 mt-10'>
           {
-            data && data.whatWeDoPoints?.length && data?.whatWeDoPoints.map((aim, index) => (
+            data && data.whatWeDoPoints?.length > 0 && (data?.whatWeDoPoints || [])?.map((aim, index) => (
               <div className='w-full text-center flex flex-col items-center  gap-4' key={index}>
                 <SanityImage image={aim?.wwdIcon} className="w-[100px] h-[50px]" usesImg fit="contain" />
                 <h1 className='lg:text-xl font-semibold text-gray-800'>{aim.wwdTitle}</h1>
@@ -149,7 +149,7 @@ export default function Home() {
         </div>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:justify-between bg-cover bg-no-repeat h-auto">
           {
-            causes && causes.map((card, index) => (
+            causes && causes?.length > 0 && (causes || [])?.map((card, index) => (
 
               <Card key={index}
                 image={card.image}
@@ -174,7 +174,7 @@ export default function Home() {
 
             <div className='flex flex-col gap-5 col-span-1 lg:col-span-3'>
               {
-                events?.length && events?.slice(0, 2)?.map((event, index) => (
+               events &&  events?.length > 0 && (events || [])?.slice(0, 2)?.map((event, index) => (
                   <Eventcard key={index} event={event} />
                 ))
               }
@@ -202,7 +202,7 @@ export default function Home() {
 
 
           {
-            data?.stats.map((item, index) => (
+            data?.stats && data?.stats?.length > 0 && (data?.stats || []).map((item, index) => (
               <div key={index}>
                 <h1 className='font-raleway text-6xl font-semibold text-white text-center'>{item.count}</h1>
                 <h1 className='font-poopins text-gray-400 font-medium text-center'>{item.statLabel}</h1>

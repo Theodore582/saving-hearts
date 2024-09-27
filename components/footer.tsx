@@ -44,7 +44,7 @@ const Footer = () => {
                     <div className='text-center lg:text-left'>
                         <h1 className='text-xl font-semibold mb-5'>Links</h1>
                         {
-                            navlinks.map((link) => (
+                            (navlinks || []).map((link) => (
 
                                 <Link key={link.url} href={link.url}> <li className='hover:font-semibold cursor-pointer hover:transition duration-150 ease-in-out hover:scale-105'>{link.link}</li></Link>
                             ))
@@ -84,7 +84,7 @@ const Footer = () => {
                         <h1 className='text-2xl text-white font-semibold '>Find Us:</h1>
                         <div className='flex flex-row gap-3'>
                             {
-                                app?.socials?.map((item, index) => {
+                                app?.socials && app?.socials?.length > 0 && (app?.socials || [])?.map((item, index) => {
                                     const Icon = getSocialIconFromString(item.name)
                                     return (
                                         <Link href={item.link} key={index}>
