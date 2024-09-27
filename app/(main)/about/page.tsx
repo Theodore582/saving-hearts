@@ -53,9 +53,9 @@ const Page = () => {
             <h1 className='text-primaryy font-semibold text-lg pt-5 '>Background</h1>
             <h1 className=' font-raleway text-3xl lg:text-5xl font-semibold lg:leading-[60px]'>{getSafeString(data?.background?.title, !!error, loading)}</h1>
           </div>
-
+          <div className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-500 lg:leading-[25px]'>
           <SanityBlock value={data?.background?.description} />
-
+          </div>
         
 
         </div>
@@ -75,22 +75,22 @@ const Page = () => {
             <h1 className='text-primaryy font-semibold text-lg pt-5 '>Background</h1>
             <h1 className=' font-raleway text-3xl lg:text-5xl font-semibold lg:leading-[60px]'>{getSafeString(data?.background?.title, !!error, loading)}</h1>
           </div>
-
+          <div className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-500 lg:leading-[25px]'>
           <SanityBlock value={data?.background2?.description} />
-         
+         </div>
         </div>
 
 
       </section>
 
       <section className='px-10 py-5 max-w-6xl mx-auto flex flex-col lg:flex-row gap-10 lg:justify-around'>
-        <section className='px-10 py-10 max-w-6xl mx-auto'>
+        <section className=''>
 
           <Tabs defaultValue="achievements" className="">
-            <div className='w-full py-5 flex items-center justify-center'>
+            <div className='w-[300px] lg:w-full lg:py-5 flex items-center justify-center'>
               <TabsList className='mx-auto py-6 px-2'>
-                <TabsTrigger className=' px-16 py-1 text-lg ' value="achievements">Achievements</TabsTrigger>
-                <TabsTrigger className='px-16 py-1 text-lg ' value="objectives">Objectives</TabsTrigger>
+                <TabsTrigger className=' lg:px-16 py-1 text-lg ' value="achievements">Achievements</TabsTrigger>
+                <TabsTrigger className='lg:px-16 py-1 text-lg ' value="objectives">Objectives</TabsTrigger>
               </TabsList>
             </div>
 
@@ -100,9 +100,9 @@ const Page = () => {
                 <h1 className='text-primaryy font-semibold text-lg pt-5'>What We&apos;ve Done</h1>
                 <h1 className=' font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px] text-black'>Achievements</h1>
               </div>
-
+              <div className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-500 lg:leading-[25px]'>
              <SanityBlock value={data?.achievement} />
-
+</div>
 
             </TabsContent>
 
@@ -111,9 +111,9 @@ const Page = () => {
                 <h1 className='text-primaryy font-semibold text-lg pt-5'>What Plan To Do</h1>
                 <h1 className=' font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px] text-black'>NOSHF OBJECTIVES </h1>
               </div>
-
+              <div className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-500 lg:leading-[25px]'>
               <SanityBlock value={data?.objective} />
-
+</div>
               
 
             </TabsContent>

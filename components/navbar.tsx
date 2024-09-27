@@ -25,7 +25,7 @@ export function Navbar() {
             <h1 className='text-4xl font-bold'><img className='' src='assets/logo.png' alt="" /></h1>
             
 
-        <NavigationMenu>
+            <NavigationMenu className="hidden md:flex">
             <NavigationMenuList>
                 {navlinks.map((navlink) => (
                     <NavigationMenuItem key={navlink.link}>
@@ -61,7 +61,7 @@ export function Navbar() {
                         </NavigationMenuLink>
                     </Link>
             </NavigationMenuList>
-            <MobileNav />
+            
         </NavigationMenu>
 
             <div className='hidden lg:flex'>
@@ -70,6 +70,7 @@ export function Navbar() {
                     title="Get In Touch" />
                 </Link>
             </div>
+            <MobileNav />
         </div>
     );
 }
