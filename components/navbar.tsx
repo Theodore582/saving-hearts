@@ -29,30 +29,11 @@ export function Navbar() {
             <NavigationMenuList>
                 {navlinks.map((navlink) => (
                     <NavigationMenuItem key={navlink.link}>
-                        {navlink.submenu ? (
-                            <>
-                                <NavigationMenuTrigger>{navlink.link}</NavigationMenuTrigger>
-                                <NavigationMenuContent>
-                                    <ul className="grid w-[300px] gap-3 p-4 md:w-[500px] md:grid-cols-1 lg:w-[300px]">
-                                        {navlink.submenu.map((sublink) => (
-                                            <ListItem className="grid-cols-2"
-                                                key={sublink.link}
-                                                title={sublink.link}
-                                                href={sublink.url}
-                                            >
-                                                {/* Add description or other content if needed */}
-                                            </ListItem>
-                                        ))}
-                                    </ul>
-                                </NavigationMenuContent>
-                            </>
-                        ) : (
                             <Link href={navlink.url} legacyBehavior passHref>
                                 <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                                     {navlink.link}
                                 </NavigationMenuLink>
                             </Link>
-                        )}
                     </NavigationMenuItem>
                 ))}
                     <Link href={"https://nii-okai-website.vercel.app/"} legacyBehavior passHref>
