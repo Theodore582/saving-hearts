@@ -105,10 +105,10 @@ const Footer = () => {
                 </div>
                 <div className='flex flex-col lg:flex-row items-center bg-white px-10 lg:px-36 h-[5vh] justify-between gap-2 pt-5'>
                     <p className='text-md text-center'> © 2023. {getSafeString(app?.appName, !!appError, appLoading)}. All Rights Reserved.</p>
-                    <div className='flex gap-5'>
+                    {/* <div className='flex gap-5'>
                         <p className='text-md hover:cursor-pointer hover:underline hover:transition duration-150 ease-in-out'> Terms & Conditions</p>
                         <p className='text-md hover:cursor-pointer hover:underline hover:transition duration-200 ease-in-out'>Privacy policy</p>
-                    </div>
+                    </div> */}
                 </div>
 
 

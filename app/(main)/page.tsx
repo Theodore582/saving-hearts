@@ -58,7 +58,11 @@ export default function Home() {
                 <p className='text-lg text-grey font-poppins '>&apos;&apos;Saving one life may not change the world, but for that one person,
                   the world changes forever.&apos;&apos;</p>
 
-                <Button title="Donate" />
+               
+                <Link href="/contact" passHref>
+                  <Button
+                    title="Donate" />
+                </Link>
               </div>
 
               <div className='flex'>
@@ -143,7 +147,7 @@ export default function Home() {
           <h1 className='text-primaryy font-semibold text-lg pt-5'>What We Do</h1>
           <h1 className=' font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px]'>Causes</h1>
         </div>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:justify-between lg:bg-[url('/assets/shade.pn')] bg-cover bg-no-repeat h-auto">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 lg:justify-between bg-cover bg-no-repeat h-auto">
           {
             causes && causes.map((card, index) => (
 

@@ -25,7 +25,7 @@ export  const navlinks = [
   // },
   {
     link: "PROJECTS",
-    url: "/projects",
+    url: "/projects/savinghearts",
     submenu: [
       // { link: "The Saving Hearts Project", url: "/" },
       { link: "The Saving Hearts Project", url: "/projects/savinghearts" },
