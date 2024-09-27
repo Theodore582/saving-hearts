@@ -11,15 +11,11 @@ export default defineType({
             type: 'string',
             description: "This field is to give a title to the document you are editing for easy reference. It will not be used on the actual website",
         }),
-
         defineField({
             name: 'hero',
             title: 'Hero Section',
             type: 'object',
             description: "This field is for the information that will show at the hero section of the about page",
-            fieldsets: [
-                { name: 'hero', title: 'Hero Section' }
-            ],
             fields: [
                 {
                     name: "bgImage",
