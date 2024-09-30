@@ -5,6 +5,12 @@ import { TfiLocationPin } from "react-icons/tfi";
 import { Event } from '@/types';
 import { getSafeString } from '@/helpers/string';
 import { format, differenceInDays, differenceInHours, differenceInMinutes, differenceInSeconds } from 'date-fns';
+import { CustomError } from './custom';
+import CustomLoader from './custom/loader';
+import { useHomePageData } from '@/hooks/use-home-page-data';
+import { useCausesData } from '@/hooks/use-causes-data';
+import { useEventsData } from '@/hooks/use-events-data';
+import Image from 'next/image';
 
 const EventCard = ({ event: { content, date, image, description, location, title } }: { event: Event; }) => {
   const eventDate = new Date(date);
@@ -49,9 +55,25 @@ const EventCard = ({ event: { content, date, image, description, location, title
   const formattedMonth = format(eventDate, 'MMMM');
   const formattedTime = format(eventDate, 'p');
 
+  const { data, error, loading } = useHomePageData();
+  const { causes, error: causesError, loading: causesLoading } = useCausesData();
+  const { events, error: eventsError, loading: eventsLoading } = useEventsData();
+
+
+  if (error || causesError || eventsError) {
+    return (
+      <CustomError  />
+    );
+  }
+  if (loading || causesLoading || eventsLoading) {
+    return (
+      <CustomLoader isScreenHeight />
+    );
+  }
+
   return (
-    <div className='bg-white flex-col shadow-lg h-auto gap-5 py-5 px-7 rounded-xl flex xl:flex-row m-0 p-0'>
-      <div className='flex flex-col gap-10'>
+    <div className='bg-white flex-col shadow-lg h-auto gap-5 py-5 px-7 justify-between rounded-xl flex xl:flex-row m-0 p-0'>
+      <div className='flex flex-col gap-16'>
         {/* Dynamically show event date */}
         <h1 className='flex flex-col text-6xl text-center font-raleway font-semibold gap-4'>
           {formattedDay}
@@ -72,18 +94,21 @@ const EventCard = ({ event: { content, date, image, description, location, title
           </p>
         </div>
       </div>
-      <div className='w-auto text-center xl:text-left'>
+      <div className='text-center xl:text-left w-[300px]'>
         {/* Dynamically show event title */}
-        <h1 className='w-[100%] text-3xl font-semibold xl:w-[500px]'>
+        <h1 className='w-[50%] text-3xl font-semibold xl:w-[300px]'>
           {getSafeString(title)}
         </h1>
         {/* Dynamically show event description */}
         <p className='font-poppins text-sm leading-loose text-gray-500 xl:w-[500px] my-5'>
           {getSafeString(description)}
         </p>
-        <div className='flex flex-col justify-center items-center gap-5 mt-auto md:flex-row xl:gap-8 xl:w-[550px]'>
+        <div className=''>
           <Button title='Learn More' />
           {/* Dynamically show event time */}
+         
+        </div>
+        <div className='flex flex-col gap-2'>
           <p className='flex gap-3 items-center font-poppins text-md text-gray-500'>
             <AiOutlineClockCircle />
             {formattedTime}
@@ -95,6 +120,16 @@ const EventCard = ({ event: { content, date, image, description, location, title
           </p>
         </div>
       </div>
+
+      <div className=''>    
+        <Image
+        className='rounded-md'
+          src="/assets/rockina.jpg"
+          alt="img"
+          width={150}
+          height={100}
+          />
+            </div> 
     </div>
   );
 };

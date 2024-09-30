@@ -175,7 +175,7 @@ export default function Home() {
             <h1 className='font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px]'>UpComing Events</h1>
           </div>
 
-          <div className=' grid grid-cols-1 lg:grid-cols-4 gap-5 mt-4 2xl:flex-row justify-between'>
+          <div className='grid grid-cols-1 lg:grid-cols-3 gap-1 mt-4 2xl:flex-row justify-start'>
 
             <div className='flex flex-col gap-5 col-span-1 lg:col-span-3'>
               {
@@ -188,13 +188,13 @@ export default function Home() {
 
             </div>
 
-            <div className='flex flex-col justify-center md:items-center w-full text-center  bg-[url("/assets/volunteer.png")] bg-cover bg-no-repeat  py-16 px-3 lg:px-10 '>
+            {/* <div className='flex flex-col justify-center md:items-center w-full text-center  bg-[url("/assets/volunteer.png")] bg-cover bg-no-repeat  py-16 px-3 lg:px-10 '>
               <h1 className='text-3xl lg:text-4xl  font-raleway font-semibold gap-4 text-primaryy backdrop-blur-sm'>{getSafeString(data?.volunteer?.title)}</h1>
               <p className='font-poppins text-sm leading-loose text-gray-300  my-5'>
                 {getSafeString(data?.volunteer?.description)}
               </p>
               <Button title='Volunteer Now' link="contact" />
-            </div>
+            </div> */}
 
 
 
