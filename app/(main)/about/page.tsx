@@ -75,10 +75,10 @@ const Page = () => {
 
         </div>
         <div>
-          <div className='py-5 lg:py-0 font-raleway text-center lg:text-left'>
+          {/* <div className='py-5 lg:py-0 font-raleway text-center lg:text-left'>
             <h1 className='text-primaryy font-semibold text-lg pt-5 '>Background</h1>
             <h1 className=' font-raleway text-3xl lg:text-5xl font-semibold lg:leading-[60px]'>{getSafeString(data?.background?.title, !!error, loading)}</h1>
-          </div>
+          </div> */}
           <div className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-500 lg:leading-[25px]'>
           <SanityBlock value={data?.background2?.description} />
          </div>
@@ -104,7 +104,7 @@ const Page = () => {
                 <h1 className='text-primaryy font-semibold text-lg pt-5'>What We&apos;ve Done</h1>
                 <h1 className=' font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px] text-black'>Achievements</h1>
               </div>
-              <div className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-500 lg:leading-[25px]'>
+              <div className='text-[15px] w-auto m-auto font-poppins text-sm leading-loose text-gray-500 lg:leading-[35px]'>
              <SanityBlock value={data?.achievement} />
 </div>
 
@@ -115,7 +115,7 @@ const Page = () => {
                 <h1 className='text-primaryy font-semibold text-lg pt-5'>What Plan To Do</h1>
                 <h1 className=' font-raleway m-auto text-3xl lg:text-5xl font-semibold lg:w-[600px] lg:leading-[60px] text-black'>NOSHF OBJECTIVES </h1>
               </div>
-              <div className='w-auto m-auto font-poppins text-sm leading-relaxed text-gray-500 lg:leading-[25px]'>
+              <div className='text-[15px] w-auto m-auto font-poppins text-sm leading-loose text-gray-500 lg:leading-[35px]'>
               <SanityBlock value={data?.objective} />
 </div>
               

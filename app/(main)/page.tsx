@@ -51,7 +51,7 @@ export default function Home() {
     <main>
       <ClientProvider>
         <Slider {...settings}>
-          <section className='w-full h-auto bg-[url("/assets/map.svg")] bg-cover bg-no-repeat container'>
+          <section className='w-full h-auto bg-[url("/assets/map.svg")] bg-cover bg-no-repeat container mt-24'>
             <div className='text-center flex flex-col lg:text-left lg:flex-row justify-between md:px-20 font-raleway'>
               <div className='flex items-center lg:items-start flex-col gap-5 mt-20  justify-center'>
                 <h1 className='text-3xl  md:text-6xl font-bold lg:leading-[70px]'>Every life saved is a world <span className='text-secondaryy'>transformed.</span></h1>
@@ -71,7 +71,7 @@ export default function Home() {
             </div>
           </section>
 
-          <section className='w-full h-[85vh] bg-[url("/assets/hero5.png")] bg-cover bg-center bg-no-repeat'>
+          <section className='w-full h-[85vh] bg-[url("/assets/hero5.png")] bg-cover bg-center bg-no-repeat mt-20'>
 
             <div className=' text-center flex flex-col gap-20 lg:text-left lg:flex-row justify-between md:px-20 font-raleway'>
               <div className='h-[60vh] flex items-center lg:items-start flex-col gap-5 mt-20 justify-center '>
@@ -159,7 +159,12 @@ export default function Home() {
 
             ))
           }
+        
         </div>
+        <div className='flex justify-center mt-10 '>
+          <Button title="Donate Now" link="contact" />
+        </div>
+
 
       </section>
 

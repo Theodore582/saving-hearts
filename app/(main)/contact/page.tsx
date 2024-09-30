@@ -27,11 +27,11 @@ const Contact = () => {
 
             <div className="grid container grid-cols-1 lg:grid-cols-2  justify-center items-center  ">
 
-                <div className=" h-full bg-primaryy my-40 m-auto p-5 ">
+                <div className=" h-auto bg-primaryy my-40 m-auto p-5 ">
 
-                    <div className="flex flex-col justify- items- ">
+                    <div className="flex flex-col justify- items-center ">
                         <h1 className='font-raleway text-center m-auto text-3xl lg:text-4xl font-semibold lg:w-[600px] lg:leading-[60px] text-white'>Contact Us</h1>
-
+                        <div className="flex flex-col items-start ">
                         <div className="flex flex-row justify-center items-center gap-10 my-6">
 
                             <p className="w-16 h-16 bg-acc flex justify-center items-center rounded-full text-white"><FaLocationDot size={30} /></p>
@@ -50,6 +50,7 @@ const Contact = () => {
                             <p className="w-16 h-16 bg-acc flex justify-center items-center rounded-full text-white"><BsMailbox size={30} /></p>
                             <p className="text-white font-semibold">{getSafeString(app?.email, !!appError, appLoading)}</p>
 
+                        </div>
                         </div>
 
 

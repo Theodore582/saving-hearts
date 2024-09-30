@@ -21,11 +21,11 @@ import Button from "./button";
 
 export function Navbar() {
     return (
-        <div className='w-full h-20 shadow-md flex items-center px-20 justify-between font-raleway'> 
+        <div className='bg-white  w-full h-20 shadow-md flex items-center px-20 justify-between font-raleway lg:fixed z-10'> 
             <h1 className='text-4xl font-bold'><img className='' src='assets/logo.png' alt="" /></h1>
             
-
-            <NavigationMenu className="hidden md:flex">
+            
+            <NavigationMenu className="hidden md:flex ">
             <NavigationMenuList>
                 {navlinks.map((navlink) => (
                     <NavigationMenuItem key={navlink.link}>
@@ -44,6 +44,7 @@ export function Navbar() {
             </NavigationMenuList>
             
         </NavigationMenu>
+            
 
             <div className='hidden lg:flex'>
                 <Link href="/contact" passHref>
