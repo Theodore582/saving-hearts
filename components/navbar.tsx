@@ -36,7 +36,7 @@ export function Navbar() {
                             </Link>
                     </NavigationMenuItem>
                 ))}
-                    <Link href={"https://nii-okai-website.vercel.app/"} legacyBehavior passHref>
+                    <Link href={"http://niiokai.com"} legacyBehavior passHref>
                         <NavigationMenuLink className={navigationMenuTriggerStyle()}>
                             NII OKAI
                         </NavigationMenuLink>
